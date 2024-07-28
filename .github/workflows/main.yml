@@ -40,6 +40,4 @@ jobs:
 
     - name: Deploy to Railway
       run: |
-         RAILWAY_TOKEN=$RAILWAY_TOKEN railway up --service=back-end-app -d
-      env:
-         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+         RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }} railway up --service=back-end-app -d
