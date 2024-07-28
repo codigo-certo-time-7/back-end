@@ -40,3 +40,4 @@ jobs:
           -H "Authorization: Bearer $RAILWAY_TOKEN" \
           -H "Content-Type: application/json" \
           -d '{"image": "docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/back-end:${{ github.sha }}"}'
+          -v
