@@ -8,6 +8,9 @@ RUN npm i
 
 COPY . .
 
+RUN npx prisma db pull
+RUN npx prisma generate
+
 RUN npm run build
 
 EXPOSE 3000
