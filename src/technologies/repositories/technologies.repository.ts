@@ -18,9 +18,6 @@ export class TechnologiesRepository {
             id: createTechnologiesDto.candidateId,
           },
         },
-        level: {
-          create: { level: createTechnologiesDto.level },
-        },
       },
     });
   }
@@ -29,7 +26,6 @@ export class TechnologiesRepository {
     const technolgies = await this.prisma.technologies.findMany({
       include: {
         candidate: true,
-        level: true,
       },
     });
 
@@ -42,7 +38,6 @@ export class TechnologiesRepository {
       where: { id },
       include: {
         candidate: true,
-        level: true,
       },
     });
     if (!technology) {
