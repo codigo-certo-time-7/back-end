@@ -12,7 +12,7 @@ export class CandidateService {
   }
 
   findAll() {
-    return `This action returns all candidates`;
+    return this.candidateRepository.listAllCandidates();
   }
 
   async findOneById(id: number) {

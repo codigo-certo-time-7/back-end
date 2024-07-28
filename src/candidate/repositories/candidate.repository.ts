@@ -43,6 +43,14 @@ export class CandidateRepository {
     };
   }
 
+  async listAllCandidates(){
+    return await this.prisma.candidate.findMany({
+      include: {
+        technologies: true
+      }
+    })
+  }
+
   async findOneByEmail(email: string): Promise<ResponseCandidateDto | null> {
     const candidate = await this.prisma.candidate.findUnique({
       where: {
