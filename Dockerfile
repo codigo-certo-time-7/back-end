@@ -1,13 +1,15 @@
-FROM node:lts-alpine
+FROM node:18-slim
 
-RUN apk add --no-cache bash
+WORKDIR /app
 
-RUN mkdir -p /home/node/.npm/_logs && chown -R node:node /home/node/.npm
+COPY package*.json ./
 
-RUN npm install -g prisma
+RUN npm install --production
 
-RUN npm install -g @nestjs/cli
+COPY . .
 
-USER node
+RUN npm run build
 
-WORKDIR /home/node/app
+EXPOSE 3000
+
+CMD ["npm","run", "start:prod"]
